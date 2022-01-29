@@ -7,18 +7,76 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		580E862227A11F9000DB3A1D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580E862127A11F9000DB3A1D /* Extension.swift */; };
+		580E862627A11FDF00DB3A1D /* logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 580E862427A11FDF00DB3A1D /* logo@3x.png */; };
+		580E862D27A11FE800DB3A1D /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 580E862827A11FE700DB3A1D /* Roboto-Light.ttf */; };
+		580E862E27A11FE800DB3A1D /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 580E862927A11FE800DB3A1D /* Roboto-Regular.ttf */; };
+		580E862F27A11FE800DB3A1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 580E862A27A11FE800DB3A1D /* Main.storyboard */; };
+		580E863027A11FE800DB3A1D /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 580E862C27A11FE800DB3A1D /* Roboto-Bold.ttf */; };
+		580E863327A121CD00DB3A1D /* x@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 580E863127A121CC00DB3A1D /* x@3x.png */; };
+		580E863427A121CD00DB3A1D /* Logos@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 580E863227A121CC00DB3A1D /* Logos@3x.png */; };
+		580E86C227A2BD0500DB3A1D /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580E86C127A2BD0400DB3A1D /* Validator.swift */; };
+		581B2C6327A3F2650069409E /* secondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581B2C6227A3F2650069409E /* secondVC.swift */; };
 		5892B8D72771EAC900E03B9F /* W3DartFramework.docc in Sources */ = {isa = PBXBuildFile; fileRef = 5892B8D62771EAC900E03B9F /* W3DartFramework.docc */; };
 		5892B8D82771EAC900E03B9F /* W3DartFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 5892B8D52771EAC900E03B9F /* W3DartFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5892B8DF2772F28C00E03B9F /* W3DartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892B8DE2772F28C00E03B9F /* W3DartVC.swift */; };
-		5892B8E12772FE7000E03B9F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5892B8E02772FE7000E03B9F /* Extension.swift */; };
+		58A6A77727A2CC7800D51C51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6A77627A2CC7800D51C51 /* AppDelegate.swift */; };
+		58A6A77B27A2CC7800D51C51 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6A77A27A2CC7800D51C51 /* ViewController.swift */; };
+		58A6A77E27A2CC7800D51C51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58A6A77C27A2CC7800D51C51 /* Main.storyboard */; };
+		58A6A78027A2CC7D00D51C51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58A6A77F27A2CC7D00D51C51 /* Assets.xcassets */; };
+		58A6A78327A2CC7D00D51C51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58A6A78127A2CC7D00D51C51 /* LaunchScreen.storyboard */; };
+		58A6A78927A2CD0C00D51C51 /* W3DartFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5892B8D22771EAC900E03B9F /* W3DartFramework.framework */; platformFilter = ios; };
+		58A6A78A27A2CD0C00D51C51 /* W3DartFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5892B8D22771EAC900E03B9F /* W3DartFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		58A6A78F27A3AE5300D51C51 /* BubbleControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6A78E27A3AE5300D51C51 /* BubbleControl.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		58A6A78B27A2CD0C00D51C51 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5892B8C92771EAC900E03B9F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5892B8D12771EAC900E03B9F;
+			remoteInfo = W3DartFramework;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		58A6A78D27A2CD0C00D51C51 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				58A6A78A27A2CD0C00D51C51 /* W3DartFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		580E862127A11F9000DB3A1D /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		580E862427A11FDF00DB3A1D /* logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@3x.png"; sourceTree = "<group>"; };
+		580E862827A11FE700DB3A1D /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		580E862927A11FE800DB3A1D /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		580E862B27A11FE800DB3A1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		580E862C27A11FE800DB3A1D /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		580E863127A121CC00DB3A1D /* x@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "x@3x.png"; sourceTree = "<group>"; };
+		580E863227A121CC00DB3A1D /* Logos@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logos@3x.png"; sourceTree = "<group>"; };
+		580E86C127A2BD0400DB3A1D /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		581B2C6227A3F2650069409E /* secondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secondVC.swift; sourceTree = "<group>"; };
 		5892B8D22771EAC900E03B9F /* W3DartFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = W3DartFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5892B8D52771EAC900E03B9F /* W3DartFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = W3DartFramework.h; sourceTree = "<group>"; };
 		5892B8D62771EAC900E03B9F /* W3DartFramework.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = W3DartFramework.docc; sourceTree = "<group>"; };
 		5892B8DE2772F28C00E03B9F /* W3DartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W3DartVC.swift; sourceTree = "<group>"; };
-		5892B8E02772FE7000E03B9F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		58A6A77427A2CC7800D51C51 /* W3DartDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = W3DartDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		58A6A77627A2CC7800D51C51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		58A6A77A27A2CC7800D51C51 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		58A6A77D27A2CC7800D51C51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		58A6A77F27A2CC7D00D51C51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		58A6A78227A2CC7D00D51C51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		58A6A78427A2CC7D00D51C51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58A6A78E27A3AE5300D51C51 /* BubbleControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,14 +87,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		58A6A77127A2CC7800D51C51 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58A6A78927A2CD0C00D51C51 /* W3DartFramework.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		580E862727A11FE700DB3A1D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				580E862827A11FE700DB3A1D /* Roboto-Light.ttf */,
+				580E862927A11FE800DB3A1D /* Roboto-Regular.ttf */,
+				580E862A27A11FE800DB3A1D /* Main.storyboard */,
+				580E862C27A11FE800DB3A1D /* Roboto-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		5892B8C82771EAC900E03B9F = {
 			isa = PBXGroup;
 			children = (
 				5892B8D42771EAC900E03B9F /* W3DartFramework */,
+				58A6A77527A2CC7800D51C51 /* W3DartDemo */,
 				5892B8D32771EAC900E03B9F /* Products */,
+				58A6A78827A2CD0C00D51C51 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -44,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				5892B8D22771EAC900E03B9F /* W3DartFramework.framework */,
+				58A6A77427A2CC7800D51C51 /* W3DartDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -51,12 +131,39 @@
 		5892B8D42771EAC900E03B9F /* W3DartFramework */ = {
 			isa = PBXGroup;
 			children = (
+				580E862727A11FE700DB3A1D /* Fonts */,
 				5892B8DE2772F28C00E03B9F /* W3DartVC.swift */,
-				5892B8E02772FE7000E03B9F /* Extension.swift */,
+				580E862127A11F9000DB3A1D /* Extension.swift */,
+				58A6A78E27A3AE5300D51C51 /* BubbleControl.swift */,
+				580E86C127A2BD0400DB3A1D /* Validator.swift */,
+				580E862427A11FDF00DB3A1D /* logo@3x.png */,
+				580E863127A121CC00DB3A1D /* x@3x.png */,
+				580E863227A121CC00DB3A1D /* Logos@3x.png */,
 				5892B8D52771EAC900E03B9F /* W3DartFramework.h */,
 				5892B8D62771EAC900E03B9F /* W3DartFramework.docc */,
 			);
 			path = W3DartFramework;
+			sourceTree = "<group>";
+		};
+		58A6A77527A2CC7800D51C51 /* W3DartDemo */ = {
+			isa = PBXGroup;
+			children = (
+				58A6A77627A2CC7800D51C51 /* AppDelegate.swift */,
+				58A6A77A27A2CC7800D51C51 /* ViewController.swift */,
+				581B2C6227A3F2650069409E /* secondVC.swift */,
+				58A6A77C27A2CC7800D51C51 /* Main.storyboard */,
+				58A6A77F27A2CC7D00D51C51 /* Assets.xcassets */,
+				58A6A78127A2CC7D00D51C51 /* LaunchScreen.storyboard */,
+				58A6A78427A2CC7D00D51C51 /* Info.plist */,
+			);
+			path = W3DartDemo;
+			sourceTree = "<group>";
+		};
+		58A6A78827A2CD0C00D51C51 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -91,6 +198,25 @@
 			productReference = 5892B8D22771EAC900E03B9F /* W3DartFramework.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		58A6A77327A2CC7800D51C51 /* W3DartDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58A6A78727A2CC7D00D51C51 /* Build configuration list for PBXNativeTarget "W3DartDemo" */;
+			buildPhases = (
+				58A6A77027A2CC7800D51C51 /* Sources */,
+				58A6A77127A2CC7800D51C51 /* Frameworks */,
+				58A6A77227A2CC7800D51C51 /* Resources */,
+				58A6A78D27A2CD0C00D51C51 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				58A6A78C27A2CD0C00D51C51 /* PBXTargetDependency */,
+			);
+			name = W3DartDemo;
+			productName = W3DartDemo;
+			productReference = 58A6A77427A2CC7800D51C51 /* W3DartDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -98,9 +224,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					5892B8D12771EAC900E03B9F = {
+						CreatedOnToolsVersion = 13.0;
+					};
+					58A6A77327A2CC7800D51C51 = {
 						CreatedOnToolsVersion = 13.0;
 					};
 				};
@@ -119,6 +249,7 @@
 			projectRoot = "";
 			targets = (
 				5892B8D12771EAC900E03B9F /* W3DartFramework */,
+				58A6A77327A2CC7800D51C51 /* W3DartDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -128,6 +259,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				580E862E27A11FE800DB3A1D /* Roboto-Regular.ttf in Resources */,
+				580E862D27A11FE800DB3A1D /* Roboto-Light.ttf in Resources */,
+				580E863027A11FE800DB3A1D /* Roboto-Bold.ttf in Resources */,
+				580E862627A11FDF00DB3A1D /* logo@3x.png in Resources */,
+				580E863427A121CD00DB3A1D /* Logos@3x.png in Resources */,
+				580E862F27A11FE800DB3A1D /* Main.storyboard in Resources */,
+				580E863327A121CD00DB3A1D /* x@3x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58A6A77227A2CC7800D51C51 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58A6A78327A2CC7D00D51C51 /* LaunchScreen.storyboard in Resources */,
+				58A6A78027A2CC7D00D51C51 /* Assets.xcassets in Resources */,
+				58A6A77E27A2CC7800D51C51 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,13 +286,61 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5892B8E12772FE7000E03B9F /* Extension.swift in Sources */,
+				580E862227A11F9000DB3A1D /* Extension.swift in Sources */,
 				5892B8D72771EAC900E03B9F /* W3DartFramework.docc in Sources */,
+				580E86C227A2BD0500DB3A1D /* Validator.swift in Sources */,
+				58A6A78F27A3AE5300D51C51 /* BubbleControl.swift in Sources */,
 				5892B8DF2772F28C00E03B9F /* W3DartVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		58A6A77027A2CC7800D51C51 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				581B2C6327A3F2650069409E /* secondVC.swift in Sources */,
+				58A6A77B27A2CC7800D51C51 /* ViewController.swift in Sources */,
+				58A6A77727A2CC7800D51C51 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		58A6A78C27A2CD0C00D51C51 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = 5892B8D12771EAC900E03B9F /* W3DartFramework */;
+			targetProxy = 58A6A78B27A2CD0C00D51C51 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		580E862A27A11FE800DB3A1D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				580E862B27A11FE800DB3A1D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		58A6A77C27A2CC7800D51C51 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				58A6A77D27A2CC7800D51C51 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		58A6A78127A2CC7D00D51C51 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				58A6A78227A2CC7D00D51C51 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		5892B8D92771EAC900E03B9F /* Debug */ = {
@@ -329,6 +525,62 @@
 			};
 			name = Release;
 		};
+		58A6A78527A2CC7D00D51C51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VWU9HA2QW9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = W3DartDemo/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sunny.com.W3DartDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		58A6A78627A2CC7D00D51C51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VWU9HA2QW9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = W3DartDemo/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sunny.com.W3DartDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -346,6 +598,15 @@
 			buildConfigurations = (
 				5892B8DC2771EAC900E03B9F /* Debug */,
 				5892B8DD2771EAC900E03B9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58A6A78727A2CC7D00D51C51 /* Build configuration list for PBXNativeTarget "W3DartDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58A6A78527A2CC7D00D51C51 /* Debug */,
+				58A6A78627A2CC7D00D51C51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
