@@ -17,6 +17,7 @@ public struct Validator {
     }
     public static func sayHallo(window:UIWindow,vc:UIViewController){
         print("Hallo baby. How are you ??")
+        W3DartVC.shared.canBecomeFirstResponder
         W3DartVC.shared.vc = vc
         mainWindow = window
         W3DartVC.shared.mainWindow = window

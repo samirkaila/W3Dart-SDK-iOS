@@ -1,0 +1,6 @@
+framework module Pods_W3DartDemo {
+  umbrella header "Pods-W3DartDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

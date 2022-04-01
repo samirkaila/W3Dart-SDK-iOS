@@ -114,9 +114,9 @@ public extension UIDevice
     *     Returns a hardcoded value of the current
     * devices CPU name.
     ***********************************************/
-    public func getCPUName() -> String
+    func getCPUName() -> String
     {
-        var processorNames = Array(CPUinfo().keys)
+        let processorNames = Array(CPUinfo().keys)
         return processorNames[0]
     }
 
@@ -125,9 +125,9 @@ public extension UIDevice
     *     Returns a hardcoded value of the current
     * devices CPU speed as specified by Apple.
     ***********************************************/
-    public func getCPUSpeed() -> String
+    func getCPUSpeed() -> String
     {
-        var processorSpeed = Array(CPUinfo().values)
+        let processorSpeed = Array(CPUinfo().values)
         return processorSpeed[0]
     }
 
@@ -265,7 +265,7 @@ extension UIDevice {
     var freeDiskSpaceInBytes:Int64 {
         if #available(iOS 11.0, *) {
             if let space = try? URL(fileURLWithPath: NSHomeDirectory() as String).resourceValues(forKeys: [URLResourceKey.volumeAvailableCapacityForImportantUsageKey]).volumeAvailableCapacityForImportantUsage {
-                return space ?? 0
+                return space
             } else {
                 return 0
             }
@@ -302,11 +302,11 @@ extension UIViewController {
     }
 }
 public extension UIWindow {
-    public var visibleViewController: UIViewController? {
+    var visibleViewController: UIViewController? {
         return UIWindow.getVisibleViewControllerFrom(self.rootViewController)
     }
 
-    public static func getVisibleViewControllerFrom(_ vc: UIViewController?) -> UIViewController? {
+    static func getVisibleViewControllerFrom(_ vc: UIViewController?) -> UIViewController? {
         if let nc = vc as? UINavigationController {
             return UIWindow.getVisibleViewControllerFrom(nc.visibleViewController)
         } else if let tc = vc as? UITabBarController {
@@ -416,3 +416,157 @@ extension UIWindow {
         }
     }
 }
+
+extension UIViewController{
+    
+    func alert(title: String, message : String)
+    {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        alertController.addAction(OKAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func alert(title: String, message : String, completion:@escaping () -> Void) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) {
+            (action: UIAlertAction) in
+            print("You've pressed OK Button")
+            completion()
+        }
+        alertController.addAction(OKAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func alert(title: String, message : String, actions:[String], completion:@escaping (_ index:Int) -> Void) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        actions.enumerated().forEach {
+            let act = UIAlertAction(title: $1, style: .default, handler: { (actionn) in
+                completion(actions.firstIndex(of:actionn.title!)!)
+            })
+            alertController.addAction(act)
+        }
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func alert(title: String?, message : String?, actions:[String], style: [UIAlertAction.Style],preferredStyle:UIAlertController.Style = .alert,completion:@escaping (_ index:Int) -> Void) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
+        actions.enumerated().forEach {
+            let act = UIAlertAction(title: $1, style: style[$0], handler: { (actionn) in
+                completion(actions.firstIndex(of:actionn.title!)!)
+            })
+            alertController.addAction(act)
+        }
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func alert(title: String, message : String, actions:[UIAlertAction]) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        for action in actions {
+            alertController.addAction(action)
+        }
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func startLoading(){
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+    }
+}
+//extension UIViewController
+//{
+    // MARK: - Loader
+    func startLoader(loaderText:String = "")
+    {
+        let balackView:UIView =
+        {
+            let view = UIView()
+            view.backgroundColor = UIColor(white: 0, alpha: 0.5)
+            view.tag = 420
+            view.translatesAutoresizingMaskIntoConstraints = false
+            return view
+        }()
+        
+        let indicator:UIActivityIndicatorView =
+        {
+            let iV = UIActivityIndicatorView(style: .whiteLarge)
+            iV.startAnimating()
+            iV.hidesWhenStopped = true
+            iV.translatesAutoresizingMaskIntoConstraints = false
+            return iV
+        }()
+        
+        let label:UILabel =
+        {
+            let label = UILabel()
+            label.font = UIFont.systemFont(ofSize: 18)
+            label.textAlignment = .center
+            label.textColor = .white
+            label.text = loaderText
+            label.numberOfLines = 0
+            label.translatesAutoresizingMaskIntoConstraints = false
+            return label
+        }()
+        
+        let stackView :UIStackView =
+        {
+            let stack = UIStackView()
+            stack.axis = .vertical
+            stack.addArrangedSubview(indicator)
+            stack.addArrangedSubview(label)
+            stack.translatesAutoresizingMaskIntoConstraints = false
+            stack.spacing = 8
+            return stack
+        }()
+        
+        DispatchQueue.main.async
+        {
+            if let window = mainWindow
+            {
+                let view = window.viewWithTag(420)
+                if view != nil
+                {
+                    stoapLoader()
+                }
+                else
+                {
+                    mainWindow?.addSubview(balackView)
+                    balackView.addSubview(stackView)
+                    
+                    NSLayoutConstraint.activate([
+                        balackView.topAnchor.constraint(equalTo: window.topAnchor),
+                        balackView.bottomAnchor.constraint(equalTo: window.bottomAnchor),
+                        balackView.leadingAnchor.constraint(equalTo: window.leadingAnchor),
+                        balackView.trailingAnchor.constraint(equalTo: window.trailingAnchor),
+                        stackView.centerXAnchor.constraint(equalTo: balackView.centerXAnchor),
+                        stackView.centerYAnchor.constraint(equalTo: balackView.centerYAnchor),
+                        stackView.leadingAnchor.constraint(equalTo: balackView.leadingAnchor),
+                        stackView.trailingAnchor.constraint(equalTo: balackView.trailingAnchor)
+                    ])
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = true
+                }
+            }
+        }
+    }
+    func stoapLoader()
+    {
+        DispatchQueue.main.async
+        {
+            if let view = mainWindow?.viewWithTag(420)
+            {
+                view.removeFromSuperview()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+//}

@@ -71,16 +71,18 @@ class W3DartVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 //        self.sharedData()
     }
-    
+
+//    MARK: - Share Data Locally add data
     func sharedData(){
         let appInfo = self.getAppInfo()
         self.capturedAry = [Captured(paramKey: "Device Name", paramValue: UIDevice.modelName), Captured(paramKey: "CPU Name", paramValue: UIDevice.current.getCPUName()), Captured(paramKey: "CPU Speed", paramValue: UIDevice.current.getCPUSpeed()), Captured(paramKey: "System Version", paramValue: UIDevice.current.systemVersion), Captured(paramKey: "App version", paramValue: appInfo), Captured(paramKey: "Device Type", paramValue: UIDevice.current.model), Captured(paramKey: "Battery Percentaeg", paramValue: self.getBatteryPercentage()), Captured(paramKey: "Time", paramValue: self.printTimestamp()), Captured(paramKey: "Screen Width", paramValue: "\(screenWidth)"), Captured(paramKey: "Screen Height", paramValue: "\(screenHeight)"), Captured(paramKey: "Brightness", paramValue: "\(currentBrightness)"), Captured(paramKey: "Mobile Network", paramValue: self.getConnectionType()), Captured(paramKey: "Language", paramValue: langStr ?? ""), Captured(paramKey: "Country", paramValue: countryCode ?? ""), Captured(paramKey: "Orientation", paramValue: self.rotated())]
         
-        self.tblCaptured.delegate = self
-        self.tblCaptured.dataSource = self
-        tblCaptured.register(CapturedCell.self, forCellReuseIdentifier: "CapturedCell")
+//        self.tblCaptured.delegate = self
+//        self.tblCaptured.dataSource = self
+//        tblCaptured.register(CapturedCell.self, forCellReuseIdentifier: "CapturedCell")
         let vc = self.top
         print("Current View Controller = \(vc ?? self)")
         let topvc = self.mainWindow?.visibleViewController
@@ -88,20 +90,25 @@ class W3DartVC: UIViewController {
         print("Current View Controller 2 = \(topvc ?? self)")
         self.startTimer()
         self.setupBubble()
+//        self.becomeFirstResponder()
         print("Run")
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.tblHeight.constant = tblCaptured.contentSize.height
+//        self.tblHeight.constant = tblCaptured.contentSize.height
     }
+    
+    //MARK: - Start Time
     private func startTimer() {
         self.totalTime = 0
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
+    
+    //MARK: - Update Time
     @objc func updateTimer() {
-        print(self.totalTime)
+//        print(self.totalTime)
         let time = self.timeFormatted(self.totalTime) // will show timer
-        print("Duration = \(time)")
+//        print("Duration = \(time)")
         if totalTime != nil {
             totalTime += 1  // decrease counter timer
         } else {
@@ -111,6 +118,8 @@ class W3DartVC: UIViewController {
             }
         }
     }
+    
+    //MARK: - Time Formatted
     func timeFormatted(_ totalSeconds: Int) -> String {
         let seconds: Int = totalSeconds % 60
         let minutes: Int = (totalSeconds / 60) % 60
@@ -118,16 +127,20 @@ class W3DartVC: UIViewController {
         return String(format: "%02d:%02d:%02d", hours,minutes, seconds)
     }
     
+    //MARK: - Manufacture Name
     func getManufactureName(name:String) -> String{
         return name
     }
    
+    //MARK: - Application Info
     func getAppInfo()->String {
         let dictionary = Bundle.main.infoDictionary!
         let version = dictionary["CFBundleShortVersionString"] as! String
         let build = dictionary["CFBundleVersion"] as! String
         return version + "(" + build + ")"
     }
+    
+    //MARK: - Get battery percentage
     
     func getBatteryPercentage()->String{
         UIDevice.current.isBatteryMonitoringEnabled = true
@@ -148,6 +161,8 @@ class W3DartVC: UIViewController {
             return "100% charged."
         }
     }
+    
+    //MARK: - Get Time stamp
     func printTimestamp()->String {
         let dateFormatter : DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
@@ -159,6 +174,8 @@ class W3DartVC: UIViewController {
         print("Current Time Date = \(dateString)")
         return dateString
     }
+    
+    //MARK: - Get which network connect
     func getConnectionType() -> String {
             guard let reachability = SCNetworkReachabilityCreateWithName(kCFAllocatorDefault, "www.google.com") else {
                 return "NO INTERNET"
@@ -194,6 +211,8 @@ class W3DartVC: UIViewController {
                 return "NO INTERNET"
             }
         }
+    
+    //MARK: - Get rotated or not
     func rotated()->String {
         if UIDevice.current.orientation.isLandscape {
             print("Orientation = Landscape")
@@ -203,6 +222,8 @@ class W3DartVC: UIViewController {
             return "Portrait"
         }
     }
+    
+    //MARK: - Get biometric type
     func biometricType() -> BiometricType {
         let authContext = LAContext()
         if #available(iOS 11, *) {
@@ -228,6 +249,7 @@ class W3DartVC: UIViewController {
         case face
     }
     
+    //MARK: - Get location is enable or not
     @available(iOS 14.0, *)
     func getLocationAccess(){
         if CLLocationManager.locationServicesEnabled() {
@@ -244,6 +266,7 @@ class W3DartVC: UIViewController {
         }
     }
     
+    //MARK: - Set bubble button like facebook messanger
     func setupBubble () {
         let win = self.mainWindow!
         bubble = BubbleControl (size: CGSize(width: 80, height: 80))
@@ -273,6 +296,8 @@ class W3DartVC: UIViewController {
         self.bugViewConstrait()
     }
     
+    //MARK: - Bubble constrait
+    
     func bugViewConstrait(){
         let win = self.mainWindow!
         //let min: CGFloat = 50
@@ -298,20 +323,21 @@ class W3DartVC: UIViewController {
         
         let lblMainTitle = UILabel()
         lblMainTitle.textColor = .black
-        lblMainTitle.font = UIFont(name: "Roboto-Bold", size: 24)
+        lblMainTitle.font = UIFont.boldSystemFont(ofSize: 24)
         lblMainTitle.text = "Report your Bug"
         
         let btnSubmit = UIButton()
         btnSubmit.backgroundColor = hexStringToUIColor(hex: "#F72360")
+        btnSubmit.addTarget(self, action: #selector(onClickSubmit), for: .touchUpInside)
         btnSubmit.setTitle("Submit", for: .normal)
-        btnSubmit.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 14)
+        btnSubmit.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         btnSubmit.layer.cornerRadius = 4
         btnClose.isUserInteractionEnabled = true
         btnClose.isEnabled = true
         
         let lblTitle = UILabel()
         lblTitle.textColor = hexStringToUIColor(hex: "#989898")
-        lblTitle.font = UIFont(name: "Roboto-Regular", size: 14)
+        lblTitle.font = UIFont.systemFont(ofSize: 14)
         lblTitle.text = "Title"
         
         let txtTitle = UITextField()
@@ -321,7 +347,7 @@ class W3DartVC: UIViewController {
         
         let lblDes = UILabel()
         lblDes.textColor = hexStringToUIColor(hex: "#989898")
-        lblDes.font = UIFont(name: "Roboto-Regular", size: 14)
+        lblDes.font = UIFont.systemFont(ofSize: 14)
         lblDes.text = "Description"
         
         let txtDes = UITextView()
@@ -337,6 +363,11 @@ class W3DartVC: UIViewController {
         self.setData(imgSS: imgSS, createdSS: currentVC.view.layer.makeSnapshot()!)
         bubble.imgSS = imgSS
         
+        let topSeprator = UIView()
+        topSeprator.backgroundColor = .gray
+        
+        let bottomSeprator = UIView()
+        bottomSeprator.backgroundColor = .gray
 //        let lblLocDeviceName = UILabel()
 //        lblLocDeviceName.textColor = hexStringToUIColor(hex: "#989898")
 //        lblLocDeviceName.font = UIFont(name: "Roboto-Regular", size: 10)
@@ -431,8 +462,10 @@ class W3DartVC: UIViewController {
         scrollSubView.addSubview(txtTitle)
         scrollSubView.addSubview(lblDes)
         scrollSubView.addSubview(txtDes)
-        scrollSubView.addSubview(lblCaptured)
+//        scrollSubView.addSubview(lblCaptured)
         scrollSubView.addSubview(imgSS)
+        scrollSubView.addSubview(topSeprator)
+        scrollSubView.addSubview(bottomSeprator)
 //        scrollSubView.addSubview(lblLocDeviceName)
 //        scrollSubView.addSubview(lblDeviceName)
 //        scrollSubView.addSubview(lblLocModelNo)
@@ -449,7 +482,7 @@ class W3DartVC: UIViewController {
 //        scrollSubView.addSubview(lblResolution)
 //        scrollSubView.addSubview(lblLocBrightness)
 //        scrollSubView.addSubview(lblBrightness)
-        scrollSubView.addSubview(tblCaptured)
+//        scrollSubView.addSubview(tblCaptured)
         
         
         btnClose.translatesAutoresizingMaskIntoConstraints = false
@@ -462,9 +495,11 @@ class W3DartVC: UIViewController {
         txtTitle.translatesAutoresizingMaskIntoConstraints = false
         lblDes.translatesAutoresizingMaskIntoConstraints = false
         txtDes.translatesAutoresizingMaskIntoConstraints = false
-        lblCaptured.translatesAutoresizingMaskIntoConstraints = false
-        tblCaptured.translatesAutoresizingMaskIntoConstraints = false
+//        lblCaptured.translatesAutoresizingMaskIntoConstraints = false
+//        tblCaptured.translatesAutoresizingMaskIntoConstraints = false
         imgSS.translatesAutoresizingMaskIntoConstraints = false
+        topSeprator.translatesAutoresizingMaskIntoConstraints = false
+        bottomSeprator.translatesAutoresizingMaskIntoConstraints = false
 //        lblLocDeviceName.translatesAutoresizingMaskIntoConstraints = false
 //        lblDeviceName.translatesAutoresizingMaskIntoConstraints = false
 //        lblLocModelNo.translatesAutoresizingMaskIntoConstraints = false
@@ -513,13 +548,22 @@ class W3DartVC: UIViewController {
             btnSubmit.widthAnchor.constraint(equalToConstant: 85),
             btnSubmit.heightAnchor.constraint(equalToConstant: 40),
             
-            imgSS.topAnchor.constraint(equalTo: btnSubmit.bottomAnchor, constant: 20),
+            topSeprator.topAnchor.constraint(equalTo: btnSubmit.bottomAnchor, constant: 20),
+            topSeprator.leadingAnchor.constraint(equalTo: scrollSubView.leadingAnchor, constant: 0),
+            topSeprator.trailingAnchor.constraint(equalTo: scrollSubView.trailingAnchor, constant: 0),
+            topSeprator.heightAnchor.constraint(equalToConstant: 1),
+            
+            imgSS.topAnchor.constraint(equalTo: topSeprator.bottomAnchor, constant: 20),
             imgSS.leadingAnchor.constraint(equalTo: scrollSubView.leadingAnchor, constant: 70),
             imgSS.trailingAnchor.constraint(equalTo: scrollSubView.trailingAnchor, constant: -70),
             imgSS.heightAnchor.constraint(equalToConstant: 300),
             
+            bottomSeprator.topAnchor.constraint(equalTo: imgSS.bottomAnchor, constant: 20),
+            bottomSeprator.leadingAnchor.constraint(equalTo: scrollSubView.leadingAnchor, constant: 0),
+            bottomSeprator.trailingAnchor.constraint(equalTo: scrollSubView.trailingAnchor, constant: 0),
+            bottomSeprator.heightAnchor.constraint(equalToConstant: 1),
             
-            lblTitle.topAnchor.constraint(equalTo: imgSS.bottomAnchor, constant: 20),
+            lblTitle.topAnchor.constraint(equalTo: bottomSeprator.bottomAnchor, constant: 20),
             lblTitle.leadingAnchor.constraint(equalTo: scrollSubView.leadingAnchor, constant: 20),
             
             txtTitle.topAnchor.constraint(equalTo: lblTitle.bottomAnchor, constant: 2),
@@ -533,17 +577,18 @@ class W3DartVC: UIViewController {
             txtDes.topAnchor.constraint(equalTo: lblDes.bottomAnchor, constant: 2),
             txtDes.leadingAnchor.constraint(equalTo: scrollSubView.leadingAnchor, constant: 16),
             txtDes.trailingAnchor.constraint(equalTo: scrollSubView.trailingAnchor, constant: -16),
+            txtDes.bottomAnchor.constraint(equalTo: scrollSubView.bottomAnchor, constant: 16),
             txtDes.heightAnchor.constraint(equalToConstant: 140),
             
-            lblCaptured.topAnchor.constraint(equalTo: txtDes.bottomAnchor, constant: 30),
-            lblCaptured.leadingAnchor.constraint(equalTo: scrollSubView.leadingAnchor, constant: 20),
+//            lblCaptured.topAnchor.constraint(equalTo: txtDes.bottomAnchor, constant: 30),
+//            lblCaptured.leadingAnchor.constraint(equalTo: scrollSubView.leadingAnchor, constant: 20),
 //            lblCaptured.heightAnchor.constraint(equalToConstant: 24),
             
-            tblCaptured.topAnchor.constraint(equalTo: lblCaptured.bottomAnchor, constant: 26),
-            tblCaptured.leadingAnchor.constraint(equalTo: scrollSubView.leadingAnchor, constant: 30),
-            tblCaptured.trailingAnchor.constraint(equalTo: scrollSubView.trailingAnchor, constant: 30),
-            tblCaptured.bottomAnchor.constraint(equalTo: scrollSubView.bottomAnchor, constant: 16),
-            tblCaptured.heightAnchor.constraint(equalToConstant: CGFloat(self.capturedAry.count * 50)),
+//            tblCaptured.topAnchor.constraint(equalTo: lblCaptured.bottomAnchor, constant: 26),
+//            tblCaptured.leadingAnchor.constraint(equalTo: scrollSubView.leadingAnchor, constant: 30),
+//            tblCaptured.trailingAnchor.constraint(equalTo: scrollSubView.trailingAnchor, constant: 30),
+//            tblCaptured.bottomAnchor.constraint(equalTo: scrollSubView.bottomAnchor, constant: 16),
+//            tblCaptured.heightAnchor.constraint(equalToConstant: CGFloat(self.capturedAry.count * 50)),
             
 //            lblDeviceName.topAnchor.constraint(equalTo: lblCaptured.bottomAnchor, constant: 26),
 //            lblDeviceName.leadingAnchor.constraint(equalTo: scrollSubView.leadingAnchor, constant: 30),
@@ -611,6 +656,11 @@ class W3DartVC: UIViewController {
     }
     // MARK: Animation
     
+    @objc func onClickSubmit(_ sender:UIButton){
+        
+    }
+    
+    //MARK: - Animation bubble
     func animateBubbleIcon (_ on: Bool) {
         let shapeLayer = self.bubble.imageView!.layer.sublayers![0] as! CAShapeLayer
         let from = on ? self.basketBezier().cgPath: self.arrowBezier().cgPath
@@ -740,6 +790,8 @@ class W3DartVC: UIViewController {
     }
 }
 
+
+//MARK: - Tableview Methods
 extension W3DartVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.capturedAry.count
@@ -760,6 +812,8 @@ extension W3DartVC:UITableViewDelegate,UITableViewDataSource{
         self.viewDidLayoutSubviews()
     }
 }
+
+//MARK: - Tableview cell class
 
 class CapturedCell: UITableViewCell {
     let lblKey = UILabel()
@@ -804,4 +858,30 @@ class CapturedCell: UITableViewCell {
 //        super.awakeFromNib()
 //
 //    }
+}
+extension UIWindow {
+    open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            print("Device shaken")
+            let vc = W3DartVC()
+            vc.mainWindow = self
+            vc.setupBubble()
+            vc.bubble.openContentView()
+        }
+    }
+}
+
+//MARK: - API Calling
+extension W3DartVC{
+    func login(){
+        let param:dictionary = [
+            "email":"sunny.w3nuts@gmail.com",
+            "password":"Test@123"
+        ]
+        API.shared.callAPI(endPoint: EndPoints.login, vc: self, param: param) { msg in
+            self.alert(title: "", message: msg)
+        } success: { dic in
+            print(dic)
+        }
+    }
 }
